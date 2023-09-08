@@ -1,9 +1,16 @@
 import Render from "./render.js";
 const _ = (e) => document.querySelector(e);
+const isDesktop = () => {
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return !regex.test(navigator.userAgent);
+}
 "".substring()
 class Gallery {
+    static empty() {
+        _("." + Gallery.classes.parent).innerHTML = "";
+    }
     static config = {
-        cardsPerContainer: 4
+        cardsPerContainer() { return isDesktop() ? 4 : 3 }
     }
     static fromCards(cards) {
         const { cardsPerContainer } = Gallery.config;
@@ -11,11 +18,11 @@ class Gallery {
         let tempCards = []
         cards.forEach((card, i) => {
             tempCards.push((new GalleryCard(card.src)));
-            if ((i + 1) % cardsPerContainer == 0) {
+            if ((i + 1) % cardsPerContainer() == 0) {
                 galleryContainer.push(new GalleryContainer(...tempCards));
                 tempCards = [];
             }
-            debugger
+
 
         });
 
@@ -34,7 +41,6 @@ class Gallery {
     }
     addContainer(galleryContainer) {
         const { parent } = this;
-        debugger
         parent.append(galleryContainer);
     }
 
