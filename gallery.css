@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10vmin 4vmin;
+  margin: 4vmin 4vmin 10vmin 4vmin;
   overflow: hidden;
   transform: skew(3deg);
 }
