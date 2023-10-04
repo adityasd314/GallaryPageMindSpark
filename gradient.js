@@ -474,6 +474,7 @@ class Gradient {
     }
     /*
     * Initializes the four section colors by retrieving them from css variables.
+    
     */
     initGradientColors() {
         this.sectionColors = ["--gradient-color-1", "--gradient-color-2", "--gradient-color-3", "--gradient-color-4"].map(cssPropertyName => {
